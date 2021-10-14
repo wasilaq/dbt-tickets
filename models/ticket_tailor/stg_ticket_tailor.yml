@@ -2,5 +2,17 @@ version: 2
 
 models:
   - name: stg_events
+    columns:
+      - name: event_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - draft
+                - published
   - name: stg_orders
   - name: stg_issued_tickets
