@@ -15,4 +15,16 @@ models:
                 - draft
                 - published
   - name: stg_orders
+    columns:
+      - name: order_id
+        description: primary key
+        tests:
+          - not_null
+          - unique
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - completed
+                - cancelled
   - name: stg_issued_tickets
