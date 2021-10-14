@@ -13,4 +13,18 @@ sources:
                   values:
                     - "order"
       - name: events
+        columns:
+          - name: object
+            description: The type of object described by the row.
+            tests:
+              - accepted_values:
+                  values:
+                    - "event"
       - name: issued_tickets
+        columns:
+          - name: object
+            description: The type of object described by the row.
+            tests:
+              - accepted_values:
+                  values:
+                    - "issued_ticket"
