@@ -28,3 +28,15 @@ models:
                 - completed
                 - cancelled
   - name: stg_issued_tickets
+    columns:
+      - name: ticket_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - valid
+                - voided
