@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: ticket_tailor
+    database: raw
+    tables:
+      - name: orders
+        columns:
+          - name: object
+            description: The type of object described by the row.
+            tests:
+              - accepted_values:
+                  values:
+                    - "order"
+      - name: events
+      - name: issued_tickets
