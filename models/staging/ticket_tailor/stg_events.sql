@@ -4,7 +4,7 @@ with events as (
       id as event_id,
       name as event_name,
       status,
-      private::boolean as is_private,
+      private::boolean as private_event,
       "START":unix::timestamp as start_time,
       "END":unix::timestamp as end_time,
       timezone,
