@@ -2,9 +2,7 @@ with tickets as (
 
     select
       ticket_id,
-      case when status = 'valid' then 'purchased'
-      when status = 'voided' then 'returned'
-      end as status,
+      status,
       event_id
     from {{ ref('stg_issued_tickets') }}
 
