@@ -6,7 +6,7 @@ with tickets as (
 
 events as (
 
-  select * from {{ ref('stg_events') }}
+  select * from {{ ref('dim_events') }}
 
 ),
 
