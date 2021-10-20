@@ -7,7 +7,16 @@ with orders as (
 final as (
 
     select
-        *,
+        id,
+        order_status,
+        booking_fee,
+        cost,
+        quantity,
+        total_cost,
+        total_cost + tax as total_cost_plus_tax,
+        currenct,
+        item_type,
+        event_id,        
 
         case when refund_amount > 0
         then true
