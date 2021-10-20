@@ -1,46 +1,44 @@
 with tickets as (
-
-    select
-      ticket_id,
-      status,
-      event_id
-    from {{ ref('stg_issued_tickets') }}
+  
+  select * from {{ ref('stg_issued_tickets') }}
 
 ),
 
 events as (
 
-    select
-      ticket_price,
-      ticket_status,
-      event_name,
-      private_event,
-      start_time,
-      end_time,
-      timezone,
-      is_online_event,
-      venue,
-      postal_code,
-      event_id
-    from {{ ref('stg_events') }}
+  select * from {{ ref('stg_events') }}
+
+),
+
+orders as (
+
+  select * from {{ ref('fct_orders') }}
+
+),
+
+final as (
+  
+  select
+    tickets.ticket_id,
+    tickets.status,
+    orders.refunded_order as refunded_ticket,
+    events.ticket_price,
+    events.ticket_status,
+    events.event_id as event_id,
+    events.event_name,
+    events.start_time,
+    events.end_time,
+    events.timezone,
+    events.private_event,
+    events.is_online_event,
+    events.venue,
+    events.postal_code
+  from tickets
+  left join events
+  on tickets.event_id = events.event_id
+  left join orders
+  on tickets.order_id = orders.order_id
 
 )
 
-
-select
-    ticket_id,
-    status,
-    ticket_price,
-    ticket_status,
-    events.event_id as event_id,
-    event_name,
-    start_time,
-    end_time,
-    timezone,
-    private_event,
-    is_online_event,
-    venue,
-    postal_code
-from tickets
-left join events
-on tickets.event_id = events.event_id
+select * from final
