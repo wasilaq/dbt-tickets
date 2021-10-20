@@ -20,6 +20,7 @@ final as (
   
   select
     tickets.ticket_id,
+    orders.order_id,
     tickets.status,
     orders.refunded_order as refunded_ticket,
     events.ticket_price,
