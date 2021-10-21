@@ -12,6 +12,10 @@ sources:
               - accepted_values:
                   values:
                     - "order"
+          - name: refund_amount
+            description: Dollar amount that was refunded for the order.
+            tests:
+              - not_null
       - name: events
         columns:
           - name: object
