@@ -21,12 +21,17 @@ models:
         tests:
           - not_null
           - unique
-      - name: status
+      - name: order_status
         tests:
           - accepted_values:
               values:
                 - completed
                 - cancelled
+      - name: event_id
+        tests:
+          - relationships:
+              to: ref('stg_events')
+              field: event_id
   - name: stg_issued_tickets
     columns:
       - name: ticket_id
