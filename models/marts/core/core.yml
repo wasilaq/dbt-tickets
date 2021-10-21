@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_events
+    columns:
+      - name: event_id
+        description: primary key
+        tests:
+          - not_null
+          - unique
+  - name: fct_orders
+    columns:
+      - name: order_id
+        description: primary key
+        tests:
+            - not_null
+            - unique
+  - name: fct_tickets
+    description: Table of all issued tickets.
+    columns:
+      - name: ticket_id
+        description: primary key
+        tests:
+          - not_null
+          - unique
