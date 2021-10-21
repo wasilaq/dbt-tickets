@@ -39,6 +39,18 @@ models:
         tests:
           - unique
           - not_null
+      - name: event_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_events')
+              field: event_id
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
       - name: status
         tests:
           - accepted_values:
